@@ -1,6 +1,8 @@
 \documentclass[letterpaper,twocolumn,10pt]{article}
 \usepackage[bookmarks,colorlinks=true]{hyperref}
 
+\newcommand{\mlist}[1]{\begin{itemize}#1\end{itemize}}
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -26,13 +28,14 @@
 
 \begin{abstract}
 
-Public key cryptography and the OpenPGP protocol are technologies which offer
-advantages in both security and convenience over symmetric encryption schemes,
-traditional identification schemes, and certification systems. Hardware support
-for OpenPGP in the form of smartcard and USB devices allows it to be used by the
-layperson in fairly wide range of settings from single sign on (SSO) to email
-security to physical access in enterprise environments. However, OpenPGP
-hardware is still a niche market, mainly in large enterprises.
+Public key cryptography and the OpenPGP protocol~\cite{rfc4880} are technologies
+which offer advantages in both security and convenience over symmetric
+encryption schemes, traditional identification schemes, and certification
+systems. Hardware support for OpenPGP in the form of smartcard and USB devices
+allows it to be used by the layperson in fairly wide range of settings from
+single sign on (SSO) to email security to physical access in enterprise
+environments. However, OpenPGP hardware is still a niche market, mainly in large
+enterprises.
 
 We believe the power and flexibility of OpenPGP should be ubiquitous, replacing
 a multitude of disparate systems and protocols used by individuals, small to
@@ -49,13 +52,41 @@ cryptography and OpenPGP might play given widespread adoption.
 % Main
 %
 
+\section{Proposal}
+
+For our project we would like to: provide a brief overview of the functionality
+of OpenPGP; take a survey of current hardware, firmware, and software which
+supports OpenPGP; investigate extends to the OpenPGP protocol which might be
+required to make it universally useful; and pinpoint major use-cases for systems
+which public key cryptography can replace, and likely even improve.
+
+Our initial investigation into OpenPGP hardware has turned up offerings which
+all have at least one major limitation. Typically this is in the amount of key
+material that they are able to store. However, other limitations include the
+number of keys (regardless of size) that can be stored, the interface, cost, and
+advanced features such as key generation, temper-resistance, companion RFID
+chipsets.
+
+Hardware which we would consider perfect would have the following properties:
+
+\mlist{
+	\item Support three to four 4096 bit master and sub-keys
+	\item Support multiple encryption algorithms, but at least RSA
+	\item Have a completely open specification so that users my trust built in...
+	\item Support for key generation
+	\item Be tamper resistant; self-destruct in the face of forensic analysis
+	\item Have a USB interface, possibly exposing itself as a smartcard
+	     \textit{reader} with attached smartcard
+}
+
+We will explore the open source YubiKey NEO~\cite{yubikey}, offered by Yubico, a
+company which offers small USB-based security products.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Refs, etc
 %
 
-	\nocite{*}
 	\footnotesize
 	\bibliographystyle{abbrv}
 	\bibliography{refs}
