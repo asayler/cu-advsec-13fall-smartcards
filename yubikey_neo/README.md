@@ -8,7 +8,37 @@
 * https://github.com/Yubico/ykneo-openpgp
 * http://forum.yubico.com/
 
+## Requirements
+
+* Yubikey Personalization Package
+(https://github.com/Yubico/yubikey-personalization)
+* gpg (not gpg2)
+* opensc
+
+## Limitations
+
+I've only made it work with gpg 1.4. Using gpg2 always leads to teh
+following error:
+
+    gpg: selecting openpgp failed: Unsupported certificate
+    gpg: OpenPGP card not available: Unsupported certificate
+
+Note: This may be realted to interference from GPG agent:
+https://www.opensc-project.org/opensc/wiki/OpenPGP
+
+## Setup
+
+### Add udev rules
+
+    sudo cp ./90-yubikey.rules /etc/udev/rules.d
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+    <unplug and replug Yubikey>
 
 ### Putting Yubikey in SmartCard Mode:
 
-1. sudo ykpersonalize -m82
+    sudo ykpersonalize -m82
+
+## Basic Usage
+
+   /usr/bin/gpg --card-status
