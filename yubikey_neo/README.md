@@ -17,13 +17,13 @@
 
 ## Limitations
 
-I've only made it work with gpg 1.4. Using gpg2 always leads to teh
+I've only made it work with gpg 1.4. Using gpg2 always leads to the
 following error:
 
     gpg: selecting openpgp failed: Unsupported certificate
     gpg: OpenPGP card not available: Unsupported certificate
 
-Note: This may be realted to interference from GPG agent:
+Note: This may be related to interference from GPG agent:
 https://www.opensc-project.org/opensc/wiki/OpenPGP
 
 ## Setup
@@ -33,7 +33,7 @@ https://www.opensc-project.org/opensc/wiki/OpenPGP
     sudo cp ./90-yubikey.rules /etc/udev/rules.d
     sudo udevadm control --reload-rules
     sudo udevadm trigger
-    <unplug and replug Yubikey>
+    <unplug and re-plug Yubikey>
 
 ### Putting Yubikey in SmartCard Mode:
 
@@ -41,4 +41,4 @@ https://www.opensc-project.org/opensc/wiki/OpenPGP
 
 ## Basic Usage
 
-   /usr/bin/gpg --card-status
+    /usr/bin/gpg --card-status
