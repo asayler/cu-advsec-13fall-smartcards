@@ -7,6 +7,7 @@
 * http://opensource.yubico.com/
 * https://github.com/Yubico/ykneo-openpgp
 * http://forum.yubico.com/
+* https://csel.cs.colorado.edu/openpgp
 
 ## Requirements
 
@@ -41,4 +42,5 @@ https://www.opensc-project.org/opensc/wiki/OpenPGP
 
 ## Basic Usage
 
-    /usr/bin/gpg --card-status
+    opensc-tool -l
+    gpg --card-status
