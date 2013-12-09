@@ -6,6 +6,7 @@
 * http://25thandclement.com/~william/YubiKey_NEO.html
 * http://opensource.yubico.com/
 * https://github.com/Yubico/ykneo-openpgp
+* https://github.com/Yubico/libykneomgr
 * http://forum.yubico.com/
 * https://csel.cs.colorado.edu/openpgp
 
