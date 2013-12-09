@@ -1,0 +1,114 @@
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage[bookmarks,colorlinks=true]{hyperref}
+
+\usepackage[text={6.5in, 9in}, centering]{geometry}
+
+\newcommand{\mlist}[1]{\begin{itemize}#1\end{itemize}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Metadata
+%
+
+\title{\Large \bf
+  Towards Ubiquitous OpenPGP Hardware
+}
+
+\date{October 13, 2013}
+
+\author{
+  Matt Monaco \\
+  \texttt{matthew.monaco@colorado.edu}
+  \and
+  Andy Sayler \\
+  \texttt{andrew.sayler@colorado.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+
+Public key cryptography and the OpenPGP protocol~\cite{rfc4880} are
+technologies which offer advantages in both security and convenience
+over symmetric encryption schemes, traditional identification schemes,
+and certification systems. Hardware support for OpenPGP in the form of
+smartcard and USB devices allows it to be used by the layperson in
+fairly wide range of settings from single sign on (SSO) to email
+security to physical access in enterprise environments. However,
+OpenPGP hardware is still a niche market, mainly in large
+enterprises. OpenPGP capable hardware (e.g. SmartCards) can both
+simplify and further secure the use of OpenPGP.
+
+We believe the power and flexibility of OpenPGP should be ubiquitous, replacing
+a multitude of disparate systems and protocols used by individuals, small to
+enterprise businesses, and governments. Furthermore, we believe the main
+hindrance to OpenPGP's widespread adoption is the lack of fully featured and
+accessible hardware. In this paper, we explore the current hardware offerings
+and their limitations. Additionally, we look forward to the role public key
+cryptography and OpenPGP might play given widespread adoption.
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Main
+%
+
+\section{Proposal}
+
+For our project we would like to: provide a brief overview of the
+functionality of OpenPGP; take a survey of current hardware, firmware,
+and software which supports OpenPGP; investigate extensions to the
+OpenPGP protocol which might be required to make it universally
+useful; discuss the security and threat models of OpenPGP hardware,
+and pinpoint major use-cases for systems which public key cryptography
+can replace, and likely even improve.
+
+Our initial investigation into OpenPGP hardware has turned up
+offerings which all have at least one major limitation. Typically this
+is in the amount of key material that they are able to store. However,
+other limitations include the number of keys (regardless of size) that
+can be stored, the interface, cost, and advanced features such as key
+generation, temper-resistance, access control, companion RFID
+chipsets, etc.
+
+Hardware which we would consider perfect would have the following properties:
+
+\mlist{
+\item Support at least one 4096 bit RSA master key
+\item Support at least three 4096 bit sub-keys
+\item Support multiple encryption algorithms, but at least RSA
+\item Have a completely open specification and interface
+\item Have a completely open implementation
+\item Support key generation
+\item Be tamper resistant; self-destruct in the face of
+  forensic analysis
+\item Provide physical access control (e.g. an external keypad)
+\item Have a USB interface, possibly exposing itself as a
+  smartcard \textit{reader} with attached smartcard
+\item Have a wireless/NFC interfaces for use with external
+  devices (e.g. phones, door locks, etc) }
+
+Toward these goals, we will explore the open source YubiKey
+NEO~\cite{yubikey}, offered by Yubico, a company which offers small
+USB-based security products. We will try to modify the Neo to meet as
+many of the above requirements as possible.
+
+We will also propose the specifications for an open source device that
+goes beyond the Neo and corrects for any limitations the Neo may be
+found to have.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Refs, etc
+%
+
+\footnotesize
+\bibliographystyle{abbrv}
+\bibliography{refs}
+
+\end{document}
+
+% vim: set noet : %
