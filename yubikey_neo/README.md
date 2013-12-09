@@ -28,20 +28,54 @@ following error:
 Note: This may be related to interference from GPG agent:
 https://www.opensc-project.org/opensc/wiki/OpenPGP
 
-## Setup
+## Basic Usage
 
-### Add udev rules
+### Setup
+
+#### Add udev rules
 
     sudo cp ./90-yubikey.rules /etc/udev/rules.d
     sudo udevadm control --reload-rules
     sudo udevadm trigger
     <unplug and re-plug Yubikey>
 
-### Putting Yubikey in SmartCard Mode:
+#### Putting Yubikey in SmartCard Mode:
 
     sudo ykpersonalize -m82
 
-## Basic Usage
+### Run
 
     opensc-tool -l
     gpg --card-status
+
+## Programming
+
+Currently hittign soem issue. See
+http://forum.yubico.com/viewtopic.php?f=26&t=1254.
+
+### Setup
+
+#### Whitelist New in pcscd
+
+(Is this really necessary?)
+
+From http://forum.yubico.com/viewtopic.php?f=26&t=982&start=10:
+
+To array ifdVendorID add:
+
+    <string>0x1050</string>
+    <string>0x1050</string>
+
+To array ifdProductID add:
+
+    <string>0x0111</string>
+    <string>0x0112</string>
+
+To the array ifdFriendlyName add:
+
+    <string>YubiKey Neo Composite</string>
+    <string>YubiKey Neo CCID</string>
+
+Restart pcsd:
+
+    sudo service pcscd restart
