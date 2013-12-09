@@ -50,12 +50,12 @@ https://www.opensc-project.org/opensc/wiki/OpenPGP
 
 ## Programming
 
-Currently hittign soem issue. See
+Currently hitting some issue. See
 http://forum.yubico.com/viewtopic.php?f=26&t=1254.
 
 ### Setup
 
-#### Whitelist New in pcscd
+#### White-list Neo in pcscd
 
 (Is this really necessary?)
 
