@@ -1,3 +1,5 @@
+## Prereqs
+
 ### Ubuntu 13.10 Packages
 
 * Main
@@ -9,6 +11,7 @@
   * libpcsclite-dev (libykneomgr only)
   * help2man (libykneomgr only)
   * gengetopt (libykneomgr only)
+  * junit4 (ykneo-openpgp only)
 * ppa:yubico/stable
   * yubikey-personalization
 * ppa:klali/stuff
@@ -20,10 +23,12 @@
 * https://github.com/Yubico
   * https://github.com/Yubico/libykneomgr
   * https://github.com/Yubico/ykneo-openpgp
+* http://www.oracle.com/
+  * Java Card Development Kit 2.2.2
 
 ## Notes
 
-I had to fix up the linked libraries using teh above packages fo fix
+I had to fix up the linked libraries using the above packages fo fix
 an issue using ykneomgr:
 
     $ ykneomgr -l -d
