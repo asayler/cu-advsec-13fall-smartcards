@@ -34,6 +34,8 @@ https://www.opensc-project.org/opensc/wiki/OpenPGP
 
 #### Add udev rules
 
+Note: This does not actully seem necessary on Ubuntu 13.10
+
     sudo cp ./90-yubikey.rules /etc/udev/rules.d
     sudo udevadm control --reload-rules
     sudo udevadm trigger
