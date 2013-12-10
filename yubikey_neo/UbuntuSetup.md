@@ -32,4 +32,4 @@ an issue using ykneomgr:
 
 Fix:
 
-   $ sudo ln -s /usr/lib/libgppcscconnectionplugin.so.1.2.2+3  /usr/lib/libgppcscconnectionplugin.so.1
+    $ sudo ln -s /usr/lib/libgppcscconnectionplugin.so.1.2.2+3  /usr/lib/libgppcscconnectionplugin.so.1
