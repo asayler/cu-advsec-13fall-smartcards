@@ -6,6 +6,7 @@
   * opensc
   * gnupg
   * gnupg2
+  * scdaemon (to use gpg2)
   * pcscd
   * libtool (libykneomgr only)
   * libpcsclite-dev (libykneomgr only)
