@@ -17,17 +17,6 @@
 * gpg (not gpg2)
 * opensc
 
-## Limitations
-
-I've only made it work with gpg 1.4. Using gpg2 always leads to the
-following error:
-
-    gpg: selecting openpgp failed: Unsupported certificate
-    gpg: OpenPGP card not available: Unsupported certificate
-
-Note: This may be related to interference from GPG agent:
-https://www.opensc-project.org/opensc/wiki/OpenPGP
-
 ## Basic Usage
 
 ### Setup
@@ -52,14 +41,13 @@ Note: This does not actully seem necessary on Ubuntu 13.10
 
 ## Programming
 
-Currently hitting some issue. See
-http://forum.yubico.com/viewtopic.php?f=26&t=1254.
+    gpshell <script>
 
 ### Setup
 
 #### White-list Neo in pcscd
 
-(Is this really necessary?)
+Note: This does not actully seem necessary on Ubuntu 13.10
 
 From http://forum.yubico.com/viewtopic.php?f=26&t=982&start=10:
 
