@@ -1,0 +1,6 @@
+report.pdf
+*.aux
+*.log
+*.blg
+*.bbl
+*.out
