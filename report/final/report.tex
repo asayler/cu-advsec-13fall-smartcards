@@ -69,33 +69,142 @@ of settings from single sign on (SSO) to email security to physical
 access in enterprise environments. SmartCard hardware can both
 simplify and further secure the use of OpenPGP. However, OpenPGP
 SmartCard hardware is still a niche market, mainly in large
-enterprises.
-
-We believe the power and flexibility of OpenPGP should be ubiquitous,
-replacing a multitude of disparate systems and protocols used by
-individuals, businesses, and governments. Furthermore, we believe the
-main hindrance to OpenPGP's widespread adoption is the lack of fully
-featured and accessible hardware. In this paper, we explore the
-current hardware offerings and their limitations. We propose changes
-to existing hardware systems to make them more accessible by the
-general use. Additionally, we explore the role public key cryptography
-and OpenPGP might play given widespread adoption.
+enterprises. We believe the power and flexibility of OpenPGP should be
+ubiquitous, replacing a multitude of disparate systems and protocols
+used by individuals, businesses, and governments. Furthermore, we
+believe the main hindrance to OpenPGP's widespread adoption is the
+lack of fully featured and accessible hardware. In this paper, we
+explore the current hardware offerings and their limitations. We
+propose changes to existing hardware systems to make them more
+accessible by the general use. Additionally, we explore the role
+public key cryptography and OpenPGP might play given widespread
+adoption.
 \end{abstract}
 
 \section{Introduction}
+\label{sec:intro}
 
+Public key cryptography systems form the basis of many of the 21st
+century systems we rely on every day: from secure web commerce to
+global financial transaction systems to remote access and
+authentication. Public key cryptography systems are the foundation of
+our ability to operate securely in a digital world. The most widely
+used public key cryptography algorithms,
+Diffie-Hellman~\cite{diffie1976} and RSA~\cite{rivest1978}, are used
+in thousands of protocols enabling millions of
+applications. Unfortunately, while widely deployed and understood in
+technical circles, public-key cryptography and the benefits it can
+provide are largely unknown or inaccessible to lay
+users~\cite{whitten1999}.
 
+OpenPGP~\cite{openpgp, rfc4880} is a standard for using public key
+cryptography across a range of inter-operable applications. It
+supports three core cryptographic operations: attestation (signing),
+encryption/decryption, and authentication. The most common way to use
+the OpenPGP standard is through a OpenPGP client
+applications. GnuPG~\cite{gnupg} is a widely deployed open-source
+Free-software OpenPGP client applications. Today OpenPGP best
+practices include the following~\cite{matt-openpgp}:
+
+\begin{packed_item}
+\item{Algorithm:} RSA-based keys are generally the preferred
+  encryption algorithm, supplanting the older DSA or ElGamel
+  algorithms. Elliptic Curve algorithms are the up-and-coming
+  encryption standard, and will likely eventually supplant RSA, but
+  RSA remains the recommended standard at this time.
+\item{Key Length:} Key lengths of 2048-bits and longer are generally
+  considered secure today. 4096-bit keys are recommended for those
+  concerned with attack by APT-level advisories.
+\item{Sub Keys:} Instead of using a signal key for all OpenPGP
+  operations, it is generally considered wiser to have a restrict
+  master key that is sued to derive a series of sub0keys, dedicating a
+  separate sub-key to each OpenPGP operation. This allows the user to
+  separate their reputation (assisted with the master key) from the
+  actual keys they use on a day-to-day basis, making it easier to
+  revoke and re-generate a specific sub-key in the event that is is
+  compromised without having to rebuild their entire OpenPGP
+  reputation.
+\end{packed_item}
+
+One of the key challenges in any cryptography system, including public
+key cryptography systems, is where and how to securely store secret
+keys. The security of cryptography systems is only as good as the
+security of the associated key storage systems. Traditional key
+storage practices include simply storing secret keys on the computer
+on which they were generated, often protected by a user-specified
+password. Such storage practice have several issues:
+
+\begin{packed_item}
+\item Keys are susceptible to compromise in the event the device on
+  which they are stored is stolen.
+\item Keys are susceptible to compromise from malicious programs
+  running on the device on which they are stored.
+\item Even keys protected with password are prone to brute force
+  password attacks that will often succeed given sufficient time and
+  computing power.
+\item Keys are inaccessible on multiple devices (fairly common in
+  modern day mobile-device centered use-cases).
+\item Keys are inaccessible in situations where the storage device is
+  inaccessible or shutdown.
+\end{packed_item}
+
+To overcome these limitations, OpenPGP allows for the use of secure
+SmartCard-based key-storage hardware. An OpenPGP SmartCard provides
+the following benefits over ad-hoc software-based key-storage:
+
+\begin{packed_desc}
+\item{Physical Security:} SmartCards contain physical security
+  measures to protect their computing and storage elements. Such
+  measures strive to grantee either the physical security or the
+  complete destruction of all data stored on the device, providing
+  protection in the event that a SmartCard is lost or stolen.
+\item{Digital Security:} SmartCards are designed to never allow the
+  key's stored on them to be transferred off the card. Thus, even
+  malicious applications can not extract keys from SmartCards.
+\item{Brute-Force Defenses:} SmartCard-stored keys are generally
+  protected with passwords or PINs similar to software-based key
+  storage. SmartCards, however, are generally programmed to erase
+  their one-board storage in the event of a user interfacing more than
+  N incorrect password attempts. This greatly limits the ability to
+  conduct brute-force attacks on key-protection passwords without
+  destroying the key in the process.
+\item{Portability:} Since a SmartCard is a stand-alone storage device,
+  it can be moved between multiple computing devises, proving
+  controlled access to OpenPGP keys across a range of locations.
+\item{On-Board Crypto:} SmartCards contain on-board cryptographic
+  processors capable of performing most cryptographic operations
+  on-card. This limiters the need to trust the cryptographic software
+  on the machine on which the SmartCard is used.
+\end{packed_desc}
+
+Public key cryptography has the potential to provide the One True
+Way\texttrademark in the world of digital attestation, encryption, and
+authentication. Furthermore, these three core public key cryptography
+capabilities can be leveraged to replace traditional non-secure
+systems like everyday front door locks or education credentials
+(\S\ref{sec:future}, adding both security and ease of use over the
+existing solutions. In order for such ubiquitous public key
+cryptography uses to come to fruition we must provide simple and
+secure methods of storing and accessing public key cryptography
+primitives like keys and IDs. SmartCards provide a hardware-based
+mechanism for proving this simple and secure storage base.
 
 \section{Existing Systems}
+\label{sec:exisitng}
 
 \section{Toward an Ideal Card}
+\label{sec:ideal}
 
 \section{Future Applications}
+\label{sec:future}
 
 \section{Conclusion}
+\label{sec:conclusion}
 
 \bibliographystyle{plain}
 \nocite{*}
 \bibliography{refs}
 
 \end{document}
+
+%%  LocalWords:  SmartCards SSO Diffie DSA ElGamel PINs
