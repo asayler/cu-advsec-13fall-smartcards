@@ -204,6 +204,29 @@ capable OpenPGP SmartCard however, can enable this \textit{in practice}. Such a
 card will enable people to use public key cryptography throughout their
 day-to-day lives.
 
+\subsection{Certificates}
+
+A certificate is a document cryptographically signed by a trusted party.
+Cryptographic certificates can be used in place of many physical documents such
+as birth certificates, diplomas, deeds to houses, auto titles, etc.
+
+For example, a marriage license is a simple text document containing the
+information found on a traditional marriage license.
+
+\begin{verbatim}
+GROOM=Bob
+BRIDE=Alice
+MUNICIPALITY=Boulder
+STATE=Colorado
+DATE=1970-01-01 00:00:00 +000
+OFFICIANT=Little Bobby Tables
+\end{verbatim}
+
+The file is then cryptographically signed by the bride, groom, officiant, and
+local marriage office using their respective SmartCard (or equivalent)
+public-key hardware. The signed document is then stored in various places such
+as the marriage office, the couple's personal storage, etc.
+
 \section{Conclusion}
 \label{sec:conclusion}
 
