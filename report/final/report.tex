@@ -432,6 +432,45 @@ primary focus has been adding support for Key Import and larger
 keys. While not successful yet, we believe that adding such support is
 likely possible with additional effort.
 
+\subsection{Interface}
+
+There are two interfaces which can be supported by the same device in order for
+it to be used in just about any setting: USB and NFC.
+
+USB is already an ubiquitous interfaces found on the full range of devices from
+PCs and laptops to cell phones and watches. The USB CCID specification lets a
+device act as combined SmartCard and SmartCard reader. This is an improvement
+over separate cards and readers as the latter is specialized hardware which is
+only somewhat common on business-grade laptops.
+
+NFC is becoming increasing popular as an interface on smart phones as well as
+point-of-sale terminals for reading credit card information. It provides an
+added convenience because the user only needs to swipe a token passed a reader
+rather than plugging it in. This convenience, however, comes with slightly
+reduced security. It is possible to scan NFC tokens without a user's consent. We
+propose a solution to this below, however the risk can be mitigated by metallic
+covers.
+
+\subsection{Capacity}
+
+Today's SmartCards and OpenPGP hardware do not have adequate capacity for
+private key material. The best tokens on the market allow for three, 2048 bit
+RSA keys. However, keys of 4096 bits are becoming increasingly common. Therefore
+a device should support at least three 4096 bit keys for signing, encryption,
+and authorization.
+
+Furthermore, most devices only support RSA cryptography. Elliptic curve DSA is a
+new algorithm which provides the same level of strength for much smaller key
+sizes. As such, it is more appropriate for embedded and otherwise low-power
+devices. ECDSA is not as proven as RSA, therefore an ideal security token
+supports keys of both variety.
+
+\subsection{Physical Security}
+
+\subsection{Cost}
+
+\subsection{Auxiliary Storage}
+
 \section{Future Applications}
 \label{sec:future}
 
