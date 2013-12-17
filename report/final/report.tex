@@ -467,6 +467,24 @@ supports keys of both variety.
 
 \subsection{Physical Security}
 
+While SmartCards are cryptographically secure and easy to keep track of compared
+to a whole host of tokens as is common today, they are still liable to be lost
+or stolen. Therefore SmartCards require physical security to protect both their
+use and the private key material stored inside.
+
+To protect against unauthorized use while plugged in to a computer, SmartCards
+should at least have a push button. This is so that software on the computer
+cannot initiate a signing operation without the user being aware.
+
+Furthermore, a PIN which can be entered on the card itself, or via the SmartCard
+API should protect against unauthorized use should the card be obtained by an
+adversary. The SmartCard hardware (as we see in some existing offerings) will
+purge the protected key material after a set number of failed attempts.
+
+To protect the key material itself, SmartCards are physically hardened and
+resistant to tampering. While this is unlikely to be $100\%$ full-proof, any
+attempts to open the card results in physically damaging it.
+
 \subsection{Cost}
 
 \subsection{Auxiliary Storage}
