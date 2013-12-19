@@ -109,19 +109,17 @@ practices include the following~\cite{matt-openpgp}:
   encryption algorithm, supplanting the older DSA or ElGamel
   algorithms. Elliptic Curve algorithms are the up-and-coming
   encryption standard, and will likely eventually supplant RSA, but
-  RSA remains the recommended standard at this time.
+  RSA remains the proven standard at this time.
 \item{\textbf{Key Length:}} Key lengths of 2048-bits and longer are
   generally considered secure today. 4096-bit keys are recommended for
-  those concerned with attack by APT-level advisories.
-\item{\textbf{Sub Keys:}} Instead of using a signal key for all
+  those concerned with attacks by APT-level advisories.
+\item{\textbf{Sub Keys:}} Instead of using a single key for all
   OpenPGP operations, it is generally considered wiser to have a
-  restrict master key that is sued to derive a series of subkeys,
+  restricted master key that is used to derive a series of subkeys,
   dedicating a separate sub-key to each OpenPGP operation. This allows
-  the user to separate their reputation (assisted with the master key)
-  from the actual keys they use on a day-to-day basis, making it
-  easier to revoke and re-generate a specific sub-key in the event
-  that is is compromised without having to rebuild their entire
-  OpenPGP reputation.
+  the user to separate their reputation from the actual keys they use
+  on a day-to-day basis, making it easier to revoke and re-generate a
+  specific sub-key in the event that it is compromised.
 \end{packed_desc}
 
 One of the key challenges in any cryptography system, including public
@@ -140,11 +138,10 @@ password. Such storage practice have several issues:
 \item{\textbf{Cracking:}} Even keys protected with password are prone
   to brute force password attacks that will often succeed given
   sufficient time and computing power.
-\item{\textbf{Multi-Device:}} Keys are inaccessible on multiple
-  devices (fairly common in modern day mobile-device centered
-  use-cases).
+\item{\textbf{Multi-Device:}} Keys are inaccessible on devices other
+  than the one on which they were created.
 \item{\textbf{Ubiquity:}} Keys are inaccessible in situations where
-  the storage device is inaccessible or shutdown.
+  the storing device is inaccessible or shutdown.
 \end{packed_desc}
 
 To overcome these limitations, OpenPGP allows for the use of secure
@@ -162,34 +159,32 @@ the following benefits over ad-hoc software-based key-storage:
   allow the key's stored on them to be transferred off the card. Thus,
   even malicious applications can not extract keys from SmartCards.
 \item{\textbf{Brute-Force Defenses:}} SmartCard-stored keys are
-  generally protected with passwords or PINs similar to software-based
-  key storage. SmartCards, however, are generally programmed to erase
-  their one-board storage in the event of a user interfacing more than
-  N incorrect password attempts. This greatly limits the ability to
-  conduct brute-force attacks on key-protection passwords without
-  destroying the key in the process.
+  generally protected with passwords or PINs. SmartCards are generally
+  programmed to erase their one-board storage in the event of a user
+  providing more than N incorrect password attempts. This greatly
+  limits the ability to conduct brute-force attacks on key passwords
+  or pins without destroying the key in the process.
 \item{\textbf{Portability:}} Since a SmartCard is a stand-alone
-  storage device, it can be moved between multiple computing devises,
+  storage device, it can be moved between multiple computing devices,
   proving controlled access to OpenPGP keys across a range of
   locations.
 \item{\textbf{On-Board Crypto:}} SmartCards contain on-board
   cryptographic processors capable of performing most cryptographic
-  operations on-card. This limiters the need to trust the
-  cryptographic software on the machine on which the SmartCard is
-  used.
+  operations on-card. This limits the need to trust the cryptographic
+  software on the machine on which the SmartCard is used.
 \end{packed_desc}
 
 Public key cryptography has the potential to provide the One True
-Way\texttrademark{} in the world of digital attestation, encryption, and
-authentication. Furthermore, these three core public key cryptography
-capabilities can be leveraged to replace traditional non-secure
-systems like everyday front door locks or education credentials
-(\S\ref{sec:future}, adding both security and ease of use over the
-existing solutions. In order for such ubiquitous public key
-cryptography uses to come to fruition we must provide simple and
+Way\texttrademark{} in the world of digital attestation, encryption,
+and authentication. Furthermore, these three core public key
+cryptography capabilities can be leveraged to replace traditional
+non-secure systems like everyday front door locks or education
+credentials (\S\ref{sec:future}, increasing both security and ease of
+use over the existing solutions. In order for such ubiquitous public
+key cryptography uses to come to fruition we must provide simple and
 secure methods of storing and accessing public key cryptography
-primitives like keys and IDs. SmartCards provide a hardware-based
-mechanism for proving this simple and secure storage base.
+primitives. SmartCards provide a hardware-based mechanism for proving
+this simple and secure public key primitive storage platform.
 
 \section{Existing Systems}
 \label{sec:exisitng}
