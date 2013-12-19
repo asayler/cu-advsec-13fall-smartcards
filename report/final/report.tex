@@ -190,13 +190,10 @@ this simple and secure public key primitive storage platform.
 \label{sec:exisitng}
 
 SmartCard technology has existed for many years. As such, there is a
-variety of existing SmartCard hardware compatibly with most OpenPGP
+variety of existing SmartCard hardware compatible with most OpenPGP
 implementations. Unfortunately, much of this hardware is designed for
-large corporate environments, and isn't necessarily updates to support
-modern use cases and best practices. Many SmartCards support generic
-access interfaces such as the Global Platform
-interface\cite{globalplatform}, allowing them to be accessed from a
-common set of libraries.
+large corporate environments, and hasn't been updated to support
+modern use cases and best practices.
 
 The OpenPGP Card~\cite{openpgpcard} is one of the original
 OpenPGP-compatible SmartCards. The card is currently in its second
@@ -211,7 +208,7 @@ Card~\cite{fellowshipcard}.
 The Crypto Stick~\cite{cryptostick} is a more modern
 OpenPGP-compatible SmartCard decision. It is comprised of a single
 device that includes both SmartCard hardware and a USB reader. This
-system is programmable, and easy to use due to it's USB interface, but
+system is programmable, and easy to use due to its USB interface, but
 is not hardened in the same manner as the OpenPGP card. Table
 \ref{tab:scfeatures} shows the basic specs for the Crypt Stick. Full
 specs are available at~\cite{cryptostick-wiki}. The Crypto Stick is
@@ -225,7 +222,9 @@ One-Time-Password (OTP) generator similar to Yubico's other
 non-SmartCard Yubikey products. It's based on the Java Card SmartCard
 API and SDE~\cite{javacard}, and runs an open source OpenPGP
 applet~\cite{yubikeyneo-openpgp-repo}. Basic specs are listed in Table
-\ref{tab:scfeatures}.
+\ref{tab:scfeatures}.  The YubiKey new is (like many SmartCards)
+compatible by the Global Platform interface\cite{globalplatform},
+allowing it to be accessed from a common set of libraries.
 
 \begin{table*}[!htb]
   \vspace{3ex}
