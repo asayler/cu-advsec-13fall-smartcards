@@ -115,7 +115,7 @@ practices include the following~\cite{matt-openpgp}:
   those concerned with attacks by APT-level advisories.
 \item{\textbf{Sub Keys:}} Instead of using a single key for all
   OpenPGP operations, it is generally considered wiser to have a
-  restricted master key that is used to derive a series of subkeys,
+  restricted master key that is used to derive a series of sub-keys,
   dedicating a separate sub-key to each OpenPGP operation. This allows
   the user to separate their reputation from the actual keys they use
   on a day-to-day basis, making it easier to revoke and re-generate a
@@ -222,9 +222,7 @@ One-Time-Password (OTP) generator similar to Yubico's other
 non-SmartCard Yubikey products. It's based on the Java Card SmartCard
 API and SDE~\cite{javacard}, and runs an open source OpenPGP
 applet~\cite{yubikeyneo-openpgp-repo}. Basic specs are listed in Table
-\ref{tab:scfeatures}.  The YubiKey new is (like many SmartCards)
-compatible by the Global Platform interface\cite{globalplatform},
-allowing it to be accessed from a common set of libraries.
+\ref{tab:scfeatures}.
 
 \begin{table*}[!htb]
   \vspace{3ex}
@@ -395,20 +393,19 @@ likely possible with additional effort.
 \section{Future Applications}
 \label{sec:future}
 
-There are many real-world applications which can \textit{technically} be
-replaced or augmented by a \textit{more secure} public key based system. A fully
-capable OpenPGP SmartCard however, can enable this \textit{in practice}. Such a
-card will enable people to use public key cryptography throughout their
-day-to-day lives.
+There are many real-world applications which can \textit{technically}
+be replaced or augmented by a \textit{more secure} public key based
+system. A fully capable OpenPGP SmartCard can help enable this
+\textit{in practice}. Such a card will enable people to use public key
+cryptography throughout their day-to-day lives.
 
 \subsection{Certificates}
 
-A certificate is a document cryptographically signed by a trusted party.
-Cryptographic certificates can be used in place of many physical documents such
-as birth certificates, diplomas, deeds to houses, auto titles, etc.
-
-For example, a marriage license is a simple text document containing the
-information found on a traditional marriage license.
+A certificate is a document cryptographically signed by a trusted
+party.  Cryptographic certificates can be used in place of many
+physical documents such as birth certificates, diplomas, deeds to
+houses, auto titles, etc. For example, a marriage license is a simple
+text document containing information such as:
 
 \begin{verbatim}
 GROOM=Bob
@@ -419,79 +416,83 @@ DATE=1970-01-01 00:00:00 +000
 OFFICIANT=Little Bobby Tables
 \end{verbatim}
 
-The file is then cryptographically signed by the bride, groom, officiant, and
-local marriage office using their respective SmartCard (or equivalent)
-public-key hardware. The signed document is then stored in various places such
-as the marriage office, the couple's personal storage, etc.
+Using public key cryptography, the file can be signed by the bride,
+groom, officiant, and local marriage office using their respective
+SmartCard (or equivalent) public-key hardware. The signed document is
+then stored in various places such as the marriage office, the
+couple's personal storage, etc, providing cryptographically-secure
+proof of marriage.
 
 \subsection{Driver's Licenses}
 
-Licenses in general are simply certificates, however a driver's license
-in particular is worth discussing because it is a certificate that most people
-are used to carrying at all times and displaying to people as
-photo-identification for various reasons.
-
-A cryptographic driver's license can be carried on the ideal SmartCard and
-shared with others when appropriate. The license includes a certificate in the
-same vain as the marriage license (above) and the signature of the states' motor
-vehicle administration endorsing the holder's ability to drive. A police officer
-inspecting the license will have a trusted copy of the keys of the motor vehicle
-administration and can instantaneously verify any license.
+Licenses in general are simply certificates, however a driver's
+license in particular is worth discussing because it is a certificate
+that most people are used to carrying at all times and displaying to
+people as photo-identification for various reasons. A cryptographic
+driver's license can be carried on the ideal SmartCard and shared with
+others when appropriate. The license includes a certificate in the
+same vain as the marriage license (above) and the signature of the
+states' motor vehicle administration endorsing the holder's ability to
+drive. A police officer inspecting the license will have a trusted
+copy of the public keys of the motor vehicle administration and can
+instantaneously verify any license.
 
 \subsection{Identification}
 
-We typically use our driver's licenses as visual identification, but in an
-ubiquitous world of public key cryptography and SmartCards the infrastructure
-for setting up trusted parties and new certification systems is very small. A
-local authority should sign an image of its residents, but not necessarily the
-\textit{motor vehicle} administration.
-
-Like a driver's license, a person stores a signed photo (or multiple photos) of
-herself on a SmartCard so that she can quickly prove that she is the rightful
-holder of said SmartCard.
+We typically use our driver's licenses as visual identification, but
+in an ubiquitous world of public key cryptography and SmartCards the
+infrastructure for setting up trusted parties and new certification
+systems is very small, allowing us to separate our photo
+identification credentials from our driving credentials. For example,
+a local authority could sign an image of one of its residents. Like a
+driver's license, a person stores a signed photo (or multiple photos)
+of herself on a SmartCard so that she can quickly prove that she is
+the rightful holder of said SmartCard.
 
 \subsection{Physical Access}
 
-Physical access through doorways is already protected by security tokens in high
-security environments. However gaining access to the home, child-safe rooms, etc
-is more secure and more convenient with a SmartCard using near field
-communication. There are already some high-tech security products entering the
-market for the general population, but they are not as powerful as they would be
-in an environment were we assume everyone is carrying a fully capable SmartCard.
-
-Furthermore, using SmartCards for physical access as the norm implies that
-everyone has their own key to the same door. Therefore, a home owner can
-\textit{e.g.}, authorize a serviceman to enter her home and audit exactly when
-he did so.
-
-\subsection{Automobiles}
-
-A often used physical access key is a car key. A SmartCard for entering and
-starting a car is not just more secure and convenient for individuals. It is
-also a way to lend your car to a friend for a specific period of time, or on
-some fixed schedule. With an ubiquitous public key infrastructure, a car owner
-can authorize the public key of another without exchanging secret information.
+Physical access through doorways is already protected by cryptographic
+security tokens in high security environments. However gaining access
+to the home, child-safe rooms, etc is more secure and more convenient
+with a SmartCard using near field communication. There are already
+some high-tech security products entering the market for the general
+population, but they are not as powerful as they would be in an
+environment were we assume everyone is carrying a fully capable
+SmartCard. Furthermore, using SmartCards for physical access as the
+norm implies that everyone has their own key to the same
+door. Therefore, a home owner can \textit{e.g.}, authorize a
+serviceman to enter her home and audit exactly when he did so. Another
+example of where SmartCard keys could replace physical keys is a car
+key. A SmartCard for entering and starting a car is not just more
+secure and convenient for individuals. It is also a way to lend your
+car to a friend for a specific period of time, or on some fixed
+schedule. With an ubiquitous public key infrastructure, a car owner
+can authorize the public key of another without exchanging secret
+information.
 
 \subsection{Transactions}
 
-In addition to certification and authentication, SmartCards can and should be
-used for transactions at both online and brick-and-mortar stores. A customer is
-presented with receipt describing the items and prices of the transaction,
-ideally on her own, trusted device and signs it to complete the transaction. A
-trusted intermediary -- a bank -- receives a transaction which is signed by two
-parties and performs the agreed upon transfer. Consumers can then be far less
-worried about incorrect and bogus charges on their monthly statement because
-they cryptographically signed off on every transaction.
+In addition to certification and authentication, SmartCards can and
+should be used for transactions at both online and brick-and-mortar
+stores. A customer is presented with receipt describing the items and
+prices of the transaction, ideally on her own, trusted device and
+signs it to complete the transaction. A trusted intermediary -- a bank
+-- receives a transaction which is signed by two parties and performs
+the agreed upon transfer. Consumers can then be far less worried about
+incorrect and bogus charges on their monthly statement because they
+cryptographically signed off on every transaction. Such a system could
+also be integrated with modern crypto-currency systems like Bitcoin.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have presented a model for an ideal SmartCard. It is capable of storing
-multiple RSA and/or ECDSA keys of 4096 (or more) bits, has both USB CCID and
-NFC interfaces, is resistant to physical tempering, and is able to store small
-amounts of signed data. Such a card is sufficient to replace the many documents,
-credit cards and keys we manage in our day-to-day lives in a more secure
-\textit{and} more convenient manor.
+We have presented a model for an ideal SmartCard. It is capable of
+storing multiple RSA and/or ECDSA keys of 4096 (or more) bits, has
+both USB CCID and NFC interfaces, is resistant to physical tempering,
+and is able to store small amounts of signed data. Such a card is
+sufficient to replace the many documents, credit cards and keys we
+manage in our day-to-day lives in a more secure \textit{and} more
+convenient manner.
 
 \bibliographystyle{plain}
 \bibliography{refs}
@@ -499,4 +500,4 @@ credit cards and keys we manage in our day-to-day lives in a more secure
 \end{document}
 
 %%  LocalWords:  SmartCards SSO Diffie DSA ElGamel PINs Malware FSFE
-%%  LocalWords:  ECDSA CCID Yubikey Neo Yubico's SDE OTP RFID
+%%  LocalWords:  ECDSA CCID Yubikey Neo Yubico's SDE OTP RFID YubiKey
