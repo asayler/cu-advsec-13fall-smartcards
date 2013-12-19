@@ -413,7 +413,7 @@ shows some specs for our ``ideal'' SmartCard.
       & Embedded
       \\ \hline
       \textbf{Interface}
-      & USB + NFC + RFID
+      & USB + NFC
       \\ \hline
       \textbf{Price}
       & $\le\$50$
@@ -426,82 +426,79 @@ shows some specs for our ``ideal'' SmartCard.
 
 We have been experimenting with tweaking the Yubikey Neo software to
 approach our ideal card. While still work in progress, we believe that
-the Yubikey Neo comes closets to what we would want in an ideal card,
+the Yubikey Neo comes closest to what we would want in an ideal card,
 and hope that software modification will get it even closer. Our
 primary focus has been adding support for Key Import and larger
 keys. While not successful yet, we believe that adding such support is
 likely possible with additional effort.
 
-\subsection{Interface}
+\subsection{Rational}
 
-There are two interfaces which can be supported by the same device in order for
-it to be used in just about any setting: USB and NFC.
+The rational behind our ideal card specs is derived form our desire to
+use SmartCard tech in all aspects of modern life while still
+maintaining a high degree of security. Justifications for various
+portions of our ideal spec are described below.
 
-USB is already an ubiquitous interfaces found on the full range of devices from
-PCs and laptops to cell phones and watches. The USB CCID specification lets a
-device act as combined SmartCard and SmartCard reader. This is an improvement
-over separate cards and readers as the latter is specialized hardware which is
-only somewhat common on business-grade laptops.
-
-NFC is becoming increasing popular as an interface on smart phones as well as
-point-of-sale terminals for reading credit card information. It provides an
-added convenience because the user only needs to swipe a token passed a reader
-rather than plugging it in. This convenience, however, comes with slightly
-reduced security. It is possible to scan NFC tokens without a user's consent. We
-propose a solution to this below, however the risk can be mitigated by metallic
-covers.
-
-\subsection{Capacity}
-
-Today's SmartCards and OpenPGP hardware do not have adequate capacity for
-private key material. The best tokens on the market allow for three, 2048 bit
-RSA keys. However, keys of 4096 bits are becoming increasingly common. Therefore
-a device should support at least three 4096 bit keys for signing, encryption,
-and authorization.
-
-Furthermore, most devices only support RSA cryptography. Elliptic curve DSA is a
-new algorithm which provides the same level of strength for much smaller key
-sizes. As such, it is more appropriate for embedded and otherwise low-power
-devices. ECDSA is not as proven as RSA, therefore an ideal security token
-supports keys of both variety.
-
-\subsection{Physical Security}
-
-While SmartCards are cryptographically secure and easy to keep track of compared
-to a whole host of tokens as is common today, they are still liable to be lost
-or stolen. Therefore SmartCards require physical security to protect both their
-use and the private key material stored inside.
-
-To protect against unauthorized use while plugged in to a computer, SmartCards
-should at least have a push button. This is so that software on the computer
-cannot initiate a signing operation without the user being aware.
-
-Furthermore, a PIN which can be entered on the card itself, or via the SmartCard
-API should protect against unauthorized use should the card be obtained by an
-adversary. The SmartCard hardware (as we see in some existing offerings) will
-purge the protected key material after a set number of failed attempts.
-
-To protect the key material itself, SmartCards are physically hardened and
-resistant to tampering. While this is unlikely to be $100\%$ full-proof, any
-attempts to open the card results in physically damaging it.
-
-\subsection{Cost}
-
-Cost is an important factor in allowing for the widespread, ubiquitous use of
-public-key cryptography and SmartCards. Today's hardware can be purchased for
-$\$50 - \$100$ which is a reasonable expense for such an important piece of
-hardware. However, with more widespread use and economies of scale, we expect
-this cost to be reduced.
-
-\subsection{Auxiliary Storage}
-
-In addition to cryptographic keys themselves, SmartCards also need capacity to
-carry other information in order to be usable in a multitude of settings. They
-should be able to store a modest amount of public keys, as well as important
-certificates (\autoref{sec:future}) such as a driver's license. With small USB
-flash drives on the market of over 64 GiB, and auxiliary data being relatively
-small, an additional 128 MiB or so of storage coupled with a SmartCard is more
-than reasonable.
+\begin{packed_desc}
+\item{\textbf{Interfaces:}} \\ \hfill There are two interfaces which
+  can be supported by the same device in order for it to be used in
+  just about any setting: USB and NFC. USB is already an ubiquitous
+  interfaces found on the full range of devices from PCs and laptops
+  to cell phones and watches. The USB CCID specification lets a device
+  act as combined SmartCard and SmartCard reader. This is an
+  improvement over separate cards and readers as the latter is
+  specialized hardware which is only somewhat common on business-grade
+  laptops. NFC is becoming increasing popular as an interface on smart
+  phones as well as point-of-sale terminals for reading credit card
+  information. It provides an added convenience because the user only
+  needs to swipe a token passe a reader rather than plugging it
+  in. This convenience, however, comes with slightly reduced
+  security. It is possible to scan NFC tokens without a user's
+  consent. We propose a solution to this below, however the risk can
+  also be mitigated by metallic covers.
+\item{\textbf{Storage Space:}} \\ \hfill Today's SmartCards and
+  OpenPGP hardware do not have adequate capacity for private key
+  material. The best tokens on the market allow for three, 2048 bit
+  RSA keys. However, keys of 4096 bits are becoming increasingly
+  common. Therefore a device should support at least three 4096 bit
+  keys for signing, encryption, and authorization. Furthermore, most
+  devices only support RSA cryptography. Elliptic curve DSA is a new
+  algorithm which provides the same level of strength for much smaller
+  key sizes. As such, it is more appropriate for embedded and
+  otherwise low-power devices. ECDSA is not as proven as RSA,
+  therefore an ideal security token supports keys of both variety. In
+  addition to cryptographic keys themselves, SmartCards also need
+  capacity to carry other information in order to be usable in a
+  multitude of settings. They should be able to store a modest amount
+  of public keys, as well as important certificates
+  (\autoref{sec:future}) such as a driver's license. With small USB
+  flash drives on the market of over 64 GiB, and auxiliary data being
+  relatively small, an additional 128 MiB or so of storage coupled
+  with a SmartCard is more than reasonable.
+\item{\textbf{Physical Security:}} \\ \hfill While SmartCards are
+  cryptographically secure and easy to keep track of compared to a
+  whole host of tokens common today, they are still liable to be lost
+  or stolen. Therefore SmartCards require physical security to protect
+  both their use and the private key material stored inside. To
+  protect against unauthorized use while plugged in to a computer,
+  SmartCards should at least have a push button. This is so that
+  software on the computer cannot initiate a signing operation without
+  the user being aware. Furthermore, a PIN which can be entered on the
+  card itself, or via the SmartCard API should protect against
+  unauthorized use should the card be obtained by an adversary. The
+  SmartCard hardware (as we see in some existing offerings) will purge
+  the protected key material after a set number of failed attempts. To
+  protect the key material itself, SmartCards are physically hardened
+  and resistant to tampering. While this is unlikely to be $100\%$
+  full-proof, any attempts to open the card results in physically
+  damaging it.
+\item{\textbf{Cost:}} \\ \hfill Cost is an important factor in
+  allowing for the widespread, ubiquitous use of public-key
+  cryptography and SmartCards. Today's hardware can be purchased for
+  $\$50 - \$100$ which is a reasonable expense for such an important
+  piece of hardware. However, with more widespread use and economies
+  of scale, we expect this cost to be reduced.
+\end{packed_desc}
 
 \section{Future Applications}
 \label{sec:future}
