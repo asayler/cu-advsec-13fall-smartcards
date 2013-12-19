@@ -206,111 +206,21 @@ The OpenPGP Card~\cite{openpgpcard} is one of the original
 OpenPGP-compatible SmartCards. The card is currently in its second
 major revision: version 2.0. The full specifications are available
 at~\cite{openpgpcard-doc-2.0}. Core specifications are available in
-Table \ref{tab:openpgpcard}. The OpenPGP card is a very traditional
+Table \ref{tab:scfeatures}. The OpenPGP card is a very traditional
 smart card design, requiring an external reader. It's currently
 limited to 2048-bit key storage. It's fairly widely deployed and used
 as the basis of products like the FSFE Fellowship
 Card~\cite{fellowshipcard}.
-
-\begin{table*}[!htb]
-  \vspace{3ex}
-  \begin{center}
-    \tabulinesep = 3pt
-    \begin{tabu} to \textwidth
-      { | X[1,c,m]
-        | X[2,c,m]
-        | }
-      \hline
-      \textbf{Type}
-      & ISO7816-4/8 Card
-      \\ \hline
-      \textbf{Form Factor}
-      & ID Card
-      \\ \hline
-      \textbf{Storage}
-      & 3x 2048-bit RSA Keys
-      \\ \hline
-      \textbf{Physical Security}
-      & Hardened
-      \\ \hline
-      \textbf{Access Control}
-      & Software PIN
-      \\ \hline
-      \textbf{Key Origin}
-      & On-card generation or import
-      \\ \hline
-      \textbf{Programmable}
-      & No
-      \\ \hline
-      \textbf{Reader}
-      & External
-      \\ \hline
-      \textbf{Interface}
-      & Reader-Dependent
-      \\ \hline
-      \textbf{Price}
-      & \$30.00
-      \\ \hline
-      \end{tabu}
-  \end{center}
-  \caption{OpenPGP Card v2.0 Specs}
-  \label{tab:openpgpcard}
-\end{table*}
 
 The Crypto Stick~\cite{cryptostick} is a more modern
 OpenPGP-compatible SmartCard decision. It is comprised of a single
 device that includes both SmartCard hardware and a USB reader. This
 system is programmable, and easy to use due to it's USB interface, but
 is not hardened in the same manner as the OpenPGP card. Table
-\ref{tab:cryptostick} shows the basic specs for the Crypt Stick. Full
+\ref{tab:scfeatures} shows the basic specs for the Crypt Stick. Full
 specs are available at~\cite{cryptostick-wiki}. The Crypto Stick is
 not available for purchase at the time of this writing pending a
 forthcoming hardware updated scheduled for sometime in the next year.
-
-\begin{table*}[!htb]
-  \vspace{3ex}
-  \begin{center}
-    \tabulinesep = 3pt
-    \begin{tabu} to \textwidth
-      { | X[1,c,m]
-        | X[2,c,m]
-        | }
-      \hline
-      \textbf{Type}
-      & USB Card
-      \\ \hline
-      \textbf{Form Factor}
-      & USB Dongle
-      \\ \hline
-      \textbf{Storage}
-      & 3x 4096-bit RSA Keys
-      \\ \hline
-      \textbf{Physical Security}
-      & Minimal
-      \\ \hline
-      \textbf{Access Control}
-      & Software PIN
-      \\ \hline
-      \textbf{Key Origin}
-      & On-card generation or import
-      \\ \hline
-      \textbf{Programable}
-      & Yes
-      \\ \hline
-      \textbf{Reader}
-      & Embedded
-      \\ \hline
-      \textbf{Interface}
-      & USB
-      \\ \hline
-      \textbf{Price}
-      & N/A
-      \\ \hline
-      \end{tabu}
-  \end{center}
-  \caption{Crypto Stick v1.4}
-  \label{tab:cryptostick}
-\end{table*}
 
 The Yubikey Neo~\cite{yubikeyneo-openpgp-blog} is a recent addition to
 the OpenPGP-compatible SmartCard market. Like the Crypto Stick, it's a
@@ -319,7 +229,7 @@ One-Time-Password (OTP) generator similar to Yubico's other
 non-SmartCard Yubikey products. It's based on the Java Card SmartCard
 API and SDE~\cite{javacard}, and runs an open source OpenPGP
 applet~\cite{yubikeyneo-openpgp-repo}. Basic specs are listed in Table
-\ref{tab:yubikeyneo}.
+\ref{tab:scfeatures}.
 
 \begin{table*}[!htb]
   \vspace{3ex}
@@ -327,43 +237,82 @@ applet~\cite{yubikeyneo-openpgp-repo}. Basic specs are listed in Table
     \tabulinesep = 3pt
     \begin{tabu} to \textwidth
       { | X[1,c,m]
-        | X[2,c,m]
+        | X[1,c,m]
+        | X[1,c,m]
+        | X[1,c,m]
+        | X[1,c,m]
         | }
       \hline
+      &
+      \textbf{OpenPGP Card 2.0} &
+      \textbf{Crypto Stick 1.4} &
+      \textbf{Yubikey Neo} &
+      \textbf{``Ideal''}
+      \\ \hline
       \textbf{Type}
-      & USB Card
+      & ISO7816-4/8
+      & Integrated
+      & Integrated
+      & Integrated
       \\ \hline
       \textbf{Form Factor}
+      & ID Card
+      & USB Dongle
+      & USB Dongle
       & USB Dongle
       \\ \hline
       \textbf{Storage}
-      & 3x 2048-bit RSA Keys
+      & 3x 2048-bit RSA
+      & 3x 4096-bit RSA
+      & 3x 2048-bit RSA
+      & 4x 4096-bit RSA/EC
       \\ \hline
       \textbf{Physical Security}
       & Hardened
+      & Minimal
+      & Hardened
+      & Hardened
       \\ \hline
       \textbf{Access Control}
+      & Software PIN
+      & Software PIN
       & Software PIN + Physical Button
+      & Hardware PIN + Physical Button
       \\ \hline
       \textbf{Key Origin}
-      & On-card generation
+      & Card or Import
+      & Card or Import
+      & Card
+      & Card or Import
       \\ \hline
       \textbf{Programable}
+      & No
+      & Yes
+      & Yes
       & Yes
       \\ \hline
       \textbf{Reader}
-      & Embedded
+      & External
+      & Integrated
+      & Integrated
+      & Integrated
       \\ \hline
       \textbf{Interface}
+      & Reader
+      & USB
+      & USB + NFC
       & USB + NFC
       \\ \hline
       \textbf{Price}
-      & \$50
+      & $\$30$
+      & Unavailable
+      & $\$50$
+      & $\le\$50$
       \\ \hline
       \end{tabu}
   \end{center}
-  \caption{Yubikey Neo}
-  \label{tab:yubikeyneo}
+  \caption{SmartCard Features}
+  \label{tab:scfeatures}
 \end{table*}
 
 \section{Toward an Ideal Card}
@@ -376,53 +325,8 @@ non-RSA keys. They also have a limited number of interfaces,
 insufficient to satisfy a range of use cases. We would like to see a
 SmartCard will full support for a range of key types and sizes as well
 as many modern wired and wireless interfaces, while still maintaining
-the security afforded by traditional SmartCards. Table \ref{tab:ideal}
+the security afforded by traditional SmartCards. Table \ref{tab:scfeatures}
 shows some specs for our ``ideal'' SmartCard.
-
-\begin{table*}[!htb]
-  \vspace{3ex}
-  \begin{center}
-    \tabulinesep = 3pt
-    \begin{tabu} to \textwidth
-      { | X[1,c,m]
-        | X[2,c,m]
-        | }
-      \hline
-      \textbf{Type}
-      & USB Card
-      \\ \hline
-      \textbf{Form Factor}
-      & USB Dongle
-      \\ \hline
-      \textbf{Storage}
-      & 4x 4096-bit+ RSA or EC Keys
-      \\ \hline
-      \textbf{Physical Security}
-      & Hardened
-      \\ \hline
-      \textbf{Access Control}
-      & Software/Hardware PIN + Physical Button
-      \\ \hline
-      \textbf{Key Origin}
-      & On-card generation or import
-      \\ \hline
-      \textbf{Programable}
-      & Yes
-      \\ \hline
-      \textbf{Reader}
-      & Embedded
-      \\ \hline
-      \textbf{Interface}
-      & USB + NFC
-      \\ \hline
-      \textbf{Price}
-      & $\le\$50$
-      \\ \hline
-      \end{tabu}
-  \end{center}
-  \caption{The ``Ideal'' SmartCard}
-  \label{tab:ideal}
-\end{table*}
 
 We have been experimenting with tweaking the Yubikey Neo software to
 approach our ideal card. While still work in progress, we believe that
@@ -431,8 +335,6 @@ and hope that software modification will get it even closer. Our
 primary focus has been adding support for Key Import and larger
 keys. While not successful yet, we believe that adding such support is
 likely possible with additional effort.
-
-\subsection{Rational}
 
 The rational behind our ideal card specs is derived form our desire to
 use SmartCard tech in all aspects of modern life while still
